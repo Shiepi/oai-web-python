@@ -1,7 +1,7 @@
 /* ---- Dark theme base ---- */
 :root {
-    --bg-main:     #121212;   /* near-black */
-    --bg-card:     #1e1e1e;   /* dark gray cards */
+    --bg-main:     #202123;   /* <-- was #121212 */
+    --bg-card:     #2b2c30;   /* a touch lighter than bg-main */
     --text-main:   #e0e0e0;   /* light gray text */
     --accent:      #0d6efd;   /* Bootstrap’s primary blue */
   }
