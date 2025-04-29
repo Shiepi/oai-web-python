@@ -1,0 +1,11 @@
+{% extends "layout.html" %}
+{% block content %}
+  <h1>Exploratory Analysis</h1>
+  <div id="plotly-div"></div>
+
+  <script>
+    // Injected JSON from Flask
+    const graphData = {{ graphJSON|safe }};
+    Plotly.newPlot('plotly-div', graphData.data, graphData.layout);
+  </script>
+{% endblock %}
