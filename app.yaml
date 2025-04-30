@@ -1,11 +1,14 @@
 runtime: python310        
-entrypoint: gunicorn -b :$PORT main:app
+entrypoint: gunicorn -t 600 -b :$PORT main:app   
 
 handlers:
   - url: /static
     static_dir: static
   - url: /.*
     script: auto
+
+instance_class: F2         # doubles RAM to 512 MB (or use F4_1G, etc.)
+
 
 env_variables:
   BUCKET_NAME: 'cs163-optadpct.appspot.com'

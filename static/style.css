@@ -1,4 +1,4 @@
-/* ---------- Plotly-docs-style dark theme ---------- */
+
 :root {
     --bg-main:   #1e1f26;   /* page background */
     --bg-card:   #262a33;   /* nav, cards, dropdowns */
@@ -6,7 +6,7 @@
     --border:    #3a3f4b;
     --text-main: #e9e9eb;
     --text-muted:#9aa1ad;
-    --accent:    #1f77b4;   /* Plotly blue */
+    --accent:    #1f77b4;   
   }
   
   /* Layout -------------------------------------------------*/
@@ -31,4 +31,22 @@
   /* Tables ------------------------------------------------*/
   .table-dark thead th     { color: var(--text-main); }
   .table-dark tbody tr     { color: var(--text-main); }
+  
+
+  /* ------------- “Back to Top” button ---------------- */
+.back-to-top {
+    position: fixed;
+    bottom: 40px;           /* distance from bottom/right corner  */
+    right: 40px;
+    z-index: 1030;          /* above modals/cards */
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity .3s ease, visibility .3s ease;
+  }
+  
+  /* class toggled by JS when scrollY > 200 */
+  .back-to-top.show {
+    opacity: 1;
+    visibility: visible;
+  }
   

@@ -1,0 +1,67 @@
+{% extends "layout.html" %}
+{% block head_extra %}
+<!-- Plotly & Bootstrap includes (same as before) -->
+...
+{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+
+  <h2>
+    Video Ads Results
+    <span class="badge bg-primary">Video</span>
+  </h2>
+
+  <!-- selector just for video charts -->
+  <div class="row mb-3">
+    <div class="col-auto"><label for="vidSelect" class="col-form-label fw-semibold">
+        Choose view:</label></div>
+    <div class="col-auto">
+      <select id="vidSelect" class="form-select">
+        <optgroup label="Scores vs Topic">
+          <option value="topic_eff">Effective × Topic</option>
+          <option value="topic_exc">Exciting × Topic</option>
+          <option value="topic_fun">Funny × Topic</option>
+        </optgroup>
+        <optgroup label="Scores vs Sentiment">
+          <option value="sent_eff">Effective × Sentiment</option>
+          <option value="sent_exc">Exciting × Sentiment</option>
+          <option value="sent_fun">Funny × Sentiment</option>
+        </optgroup>
+        <optgroup label="Language split">
+          <option value="topic_lang">Language Score by Topic</option>
+          <option value="sent_lang">Language Score by Sentiment</option>
+        </optgroup>
+        <option value="topic_sent">Stacked Sentiment × Topic</option>
+      </select>
+    </div>
+  </div>
+
+  <div id="vidContainer">
+    <!-- one block per figure -->
+    <div data-vid="topic_eff"  class="chart-block">{{ topic_eff|safe }}</div>
+    <div data-vid="topic_exc"  class="chart-block d-none">{{ topic_exc|safe }}</div>
+    <div data-vid="topic_fun"  class="chart-block d-none">{{ topic_fun|safe }}</div>
+
+    <div data-vid="sent_eff"   class="chart-block d-none">{{ sent_eff|safe }}</div>
+    <div data-vid="sent_exc"   class="chart-block d-none">{{ sent_exc|safe }}</div>
+    <div data-vid="sent_fun"   class="chart-block d-none">{{ sent_fun|safe }}</div>
+
+    <div data-vid="topic_lang" class="chart-block d-none">{{ topic_lang|safe }}</div>
+    <div data-vid="sent_lang"  class="chart-block d-none">{{ sent_lang|safe }}</div>
+
+    <div data-vid="topic_sent" class="chart-block d-none">{{ topic_sent|safe }}</div>
+  </div>
+</div>
+
+<script>
+  const vidSelect  = document.getElementById('vidSelect');
+  const vidBlocks  = document.querySelectorAll('#vidContainer .chart-block');
+
+  vidSelect.addEventListener('change', e => {
+    vidBlocks.forEach(b =>
+      b.classList.toggle('d-none', b.dataset.vid !== e.target.value)
+    );
+  });
+</script>
+{% endblock %}

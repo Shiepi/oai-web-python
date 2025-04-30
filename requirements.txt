@@ -5,3 +5,7 @@ Flask
 gunicorn
 google-cloud-storage
 numpy
+kmodes
+umap-learn
+gcsfs
+scikit-learn
