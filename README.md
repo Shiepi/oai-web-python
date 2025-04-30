@@ -35,6 +35,21 @@ python -m venv .venv && source .venv/bin/activate   # optional
 pip install -r requirements.txt
 ```
 
+### Required Packages
+```bash
+dash
+plotly
+pandas
+Flask
+gunicorn
+google-cloud-storage
+numpy
+kmodes
+umap-learn
+gcsfs
+scikit-learn
+```
+
 **Data Ingestion & Cleaning** – utils/data_pipeline.py reads the Image & Video Ads annotations (CSV/JSON) from the configured GCS bucket, normalises label indices and writes temp2.csv. 
 GitHub
 
