@@ -1,5 +1,45 @@
 {% extends "layout.html" %}
 {% block content %}
-  <h1>About</h1>
-  <p>Write something about the project, data sources, authors, etc.</p>
+  <h1>Our Story</h1>
+  <p>As we live in a society that heavily relies on computer technology, the strategy of advertising has also shifted towards more usage of computer technology which advertisers have a technique of spreading information faster and in bigger quantities than ever before. </p>
+  <p>It has also allowed ease of sharing awareness of your product as using the internet has enabled to connect with everyone all around the world. </p>
+
+  <figure class="text-center my-4">
+    <img src="{{ url_for('static', filename='images/aboutpage_caption1.jpg') }}"
+         class="img-fluid rounded w-50"
+         alt="Victorian street scene covered with posters and playbills">
+  
+    <figcaption class="mt-2 small text-muted">
+        <span class="d-block fw-semibold">19th Century Advertising with Posters (England)</span>   
+      Source: <a href="https://en.wikipedia.org/wiki/History_of_advertising#/media/File:Parrywatercolour.jpg" target="_blank" rel="noopener">
+        John Orlando Parry, “Posters at Hoarding,” 1837
+      </a>
+    </figcaption>
+  </figure>
+  
+  
+  
+
+
+  <p>Our goal is to analyze & explain how different advertisements manipulate emotions/sentiments to achieve advertising effectiveness through viewers' reactions to what they should do and why they should do what is said in the advertisement. </p>
+
+  <figure class="text-center my-4">
+    <img src="{{ url_for('static', filename='images/aboutpage_caption2.jpg') }}"
+         class="img-fluid rounded w-50"
+         alt="New York City Times Square">
+  
+    <figcaption class="mt-2 small text-muted">
+        <span class="d-block fw-semibold">21st Century Advertising on Digital Screens (Times Square NYC)</span> 
+      Source: <a href="https://unsplash.com/@robertbye" target="_blank" rel="noopener">
+        Robert Bye on Unsplash
+      </a>
+    </figcaption>
+  </figure>
+
+  <p>In simpler terms, OAI is aiming to:</p>
+  <ul>
+      <li>Analyze what key emotions/sentiments make an advertisement effective</li>
+      <li>Discover specific patterns of viewer reactions to image/video advertisements</li>
+      <li>Create recommendations for your product depending on what you want in an advertisement</li>
+  </ul>
 {% endblock %}
