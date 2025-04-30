@@ -24,8 +24,8 @@
     <div class="col-auto">
       <select id="chartSelect" class="form-select">
         <option value="elbow">KModes Elbow Curve</option>
-        <option value="tsne">t-SNE Scatter</option>
-        <option value="umap">UMAP Scatter</option>
+        <option value="tsne">Sentiment v. Strategies (t-SNE)</option>
+        <option value="umap">Sentiment v. Strategies Alt. (UMAP)</option>
         <option value="sentiment">Sentiment × Cluster Bar</option>
       </select>
     </div>
@@ -47,9 +47,7 @@
     <!-- t-SNE -->
     <div data-chart="tsne" class="chart-block d-none">
       <p class="chart-desc">
-        t-SNE compresses the high-dimensional one-hot features into two axes so
-        you can see clusters spatially. Points are coloured by the KModes
-        cluster ID and shaped by the dominant sentiment of the image.
+        Sentiments (Positive, Negative and Neutral) are clustered compared by their common strategies used.
       </p>
       {{ tsne|safe }}
     </div>
@@ -57,9 +55,7 @@
     <!-- UMAP -->
     <div data-chart="umap" class="chart-block d-none">
       <p class="chart-desc">
-        UMAP is an alternative manifold projection.  Compare it with the t-SNE
-        chart: similar neighbourhoods confirm robust clustering, while
-        differences may hint at borderline items.
+        Similar to the Sentiments v. Strategies chart, using a different technique, it shows a much clearer image of common strategy usage among sentiments.    
       </p>
       {{ umap|safe }}
     </div>
