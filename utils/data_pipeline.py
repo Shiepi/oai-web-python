@@ -16,7 +16,7 @@ processed_path = Path("gs://cs163-optadpct.appspot.com/processed/temp2.csv")
 import pandas as pd
 import plotly.express as px
 
-file_path = "C:/Users/Alice/Documents/SJSU/CS-163/annotations_images/image/"
+file_path = "gs://cs163-optadpct.appspot.com/annotations_images/image"
 
 image_topics_list = pd.read_csv(file_path + "topics_list.csv")
 image_sentiments_list = pd.read_csv(file_path + "sentiments_list.csv")
