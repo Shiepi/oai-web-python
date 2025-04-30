@@ -26,15 +26,6 @@ Please visit the [official dataset page](https://people.cs.pitt.edu/~kovashka/ad
 
 ## Quick Setup
 
-### Clone & install
-
-```bash
-git clone https://github.com/Shiepi/oai-web-python.git
-cd oai-web-python
-python -m venv .venv && source .venv/bin/activate   # optional
-pip install -r requirements.txt
-```
-
 ### Required Packages
 ```bash
 dash
@@ -48,6 +39,38 @@ kmodes
 umap-learn
 gcsfs
 scikit-learn
+```
+
+### Clone & install
+
+```bash
+git clone https://github.com/Shiepi/oai-web-python.git
+cd oai-web-python
+python -m venv .venv && source .venv/bin/activate   # optional
+pip install -r requirements.txt
+```
+
+
+## Pipeline
+```bash
+┌────────────┐       ┌────────────────────┐      ┌────────────────┐
+│ Raw ads    │ ───► │ data_pipeline.py    │ ───► │ temp2.csv      │
+│ annotations│       │  (merge + cleaning)│      │ (processed)    │
+└────────────┘       └────────────────────┘      └────────────────┘
+        │                                          │
+        │                                          ▼
+        │                               ┌────────────────────┐
+        │                               │ cluster_analysis.py│───┐
+        │                               │ (K-Modes + t-SNE   │   │Plotly
+        │                               │  /UMAP figures)    │   │figs
+        ▼                               └────────────────────┘   │
+┌────────────────────┐                                  ┌────────▼────────┐
+│ video_analysis.py   │ (box/stacked plots for video ads)│  Flask routes   │
+│ (score & sentiment) │─────────────────────────────────►│ (main.py + Jinja)│
+└────────────────────┘                                  └────────┬────────┘
+                                                                 ▼
+                                                       Deployed website
+
 ```
 
 **Data Ingestion & Cleaning** – utils/data_pipeline.py reads the Image & Video Ads annotations (CSV/JSON) from the configured GCS bucket, normalises label indices and writes temp2.csv. 
