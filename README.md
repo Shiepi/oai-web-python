@@ -4,7 +4,7 @@
 
 # Overview
 A website that contains the analysis of the image & video ads dataset called, "Automatic Understanding of Image and Video Advertisements" by the University of Pittsburgh.
-This project relies on the Image & Video Advertisements dataset introduced by Hussain et al. in their CVPR 2017 paper “Automatic Understanding of Image and Video Advertisements” (64 832 images, 3 477 videos, rich topic/sentiment/symbolism annotations). 
+This project relies on the Image & Video Advertisements dataset introduced by Hussain et al. in their CVPR 2017 paper “Automatic Understanding of Image and Video Advertisements” (64832 images, 3477 videos, rich topic/sentiment/symbolism annotations). 
 
 
 Please visit the [official dataset page](https://people.cs.pitt.edu/~kovashka/ads/) for license & citation details.
