@@ -54,7 +54,7 @@ pip install -r requirements.txt
 ## Pipeline
 ```bash
 ┌────────────┐       ┌────────────────────┐      ┌────────────────┐
-│ Raw ads    │ ───► │ data_pipeline.py    │ ───► │ temp2.csv      │
+│ Raw ads    │ ───►  │ data_pipeline.py   │ ───► │ temp2.csv      │
 │ annotations│       │  (merge + cleaning)│      │ (processed)    │
 └────────────┘       └────────────────────┘      └────────────────┘
         │                                          │
@@ -65,8 +65,8 @@ pip install -r requirements.txt
         │                               │  /UMAP figures)    │   │figs
         ▼                               └────────────────────┘   │
 ┌────────────────────┐                                  ┌────────▼────────┐
-│ video_analysis.py   │ (box/stacked plots for video ads)│  Flask routes   │
-│ (score & sentiment) │─────────────────────────────────►│ (main.py + Jinja)│
+│ video_analysis.py  │ (box/stacked plots for video ads)│  Flask routes   │
+│ (score & sentiment)│─────────────────────────────────►│(main.py + Jinja)│
 └────────────────────┘                                  └────────┬────────┘
                                                                  ▼
                                                        Deployed website
