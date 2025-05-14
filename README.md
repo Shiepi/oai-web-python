@@ -41,7 +41,7 @@ gcsfs
 scikit-learn
 ```
 
-### Clone & install
+### Clone & Install
 
 ```bash
 git clone https://github.com/Shiepi/oai-web-python.git
