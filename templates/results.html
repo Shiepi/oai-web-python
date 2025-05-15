@@ -109,8 +109,14 @@
 
   select.addEventListener('change', ({target}) => {
     blocks.forEach(b => {
-      b.classList.toggle('d-none', b.dataset.chart !== target.value);
-    });
+      const isVisible = b.dataset.chart === target.value;
+      b.classList.toggle('d-none', !isVisible);
+
+      if (isVisible) {
+        const plot = b.querySelector('.plotly-graph-div');
+        if (plot) Plotly.Plots.resize(plot);
+      }
+      });
   });
 
   const subSel   = document.getElementById('subSelect');
@@ -118,8 +124,23 @@
 
   subSel.addEventListener('change', e => {
     subBlocks.forEach(b => {
-      b.classList.toggle('d-none', b.dataset.sub !== e.target.value);
+      const isVisible = b.dataset.sub === e.target.value;
+      b.classList.toggle('d-none', !isVisible);
+
+      if (isVisible) {
+        const plot = b.querySelector('.plotly-graph-div');
+        if (plot) Plotly.Plots.resize(plot);
+      }
     });
   });
 </script>
+
+<hr>
+
+<h1>Major Findings</h1>
+  <p>From the individual cluster maps, we can see that positive sentiments share a lot of similar strategies and symbols, while neutral and negative sentiments have a 
+    larger variety of strategies and symbols in their portrayal. The clusters can reveal which combinations of symbols and strategies evoke certain sentiments, along with 
+    which strategies and visuals are usually used with each topic. 
+  </p>
+
 {% endblock %}

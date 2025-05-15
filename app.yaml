@@ -9,6 +9,5 @@ handlers:
 
 instance_class: F2         # doubles RAM to 512 MB (or use F4_1G, etc.)
 
-
 env_variables:
   BUCKET_NAME: 'cs163-optadpct.appspot.com'

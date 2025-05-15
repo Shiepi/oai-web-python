@@ -3,7 +3,8 @@ from pathlib import Path
 import pandas as pd, plotly.express as px
 from plotly.graph_objs import Figure
 
-RAW_DIR = Path("gs://cs163-optadpct.appspot.com/annotations_videos/video")  
+RAW_DIR = Path(r"C:\Users\Alice\Documents\SJSU\CS-163\annotations_videos\video")
+#RAW_DIR = Path("gs://cs163-optadpct.appspot.com/annotations_videos/video/")  
 PROCESSED = RAW_DIR / "processed_video_temp.csv"                                   # optional cache
 
 def build_video_figures(force: bool = False) -> dict[str, Figure]:

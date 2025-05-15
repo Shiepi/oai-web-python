@@ -1,13 +1,12 @@
 from pathlib import Path
 import pandas as pd
 
-# ───────────────────────── CONFIGURE ONCE ────────────────────────────
-# Where are the raw CSV / JSON files?
-# file_root      = Path(r"C:\")
-# file_root    = Path("/content/drive/MyDrive/25SP CS-163/Datasets/annotations_images/image")
-file_root    = Path("gs://cs163-optadpct.appspot.com/annotations_images/image")  # works with gcsfs
+# ───────────────────────────────────────────────────────────────
+# CSV / JSON files
+file_root    = Path("gs://cs163-optadpct.appspot.com/annotations_images/image")  
+# file_root = Path(r"C:\")
 
-# Where do you want temp2.csv to end up?
+# temp2.csv
 # processed_path = Path(r"C:\")
 processed_path = Path("gs://cs163-optadpct.appspot.com/processed/temp2.csv")
 # ─────────────────────────────────────────────────────────────────────
@@ -16,6 +15,7 @@ processed_path = Path("gs://cs163-optadpct.appspot.com/processed/temp2.csv")
 import pandas as pd
 import plotly.express as px
 
+# file_path = Path(r"C:\")
 file_path = "gs://cs163-optadpct.appspot.com/annotations_images/image"
 
 image_topics_list = pd.read_csv(file_path + "topics_list.csv")

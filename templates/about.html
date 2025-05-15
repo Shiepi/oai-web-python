@@ -42,4 +42,33 @@
       <li>Discover specific patterns of viewer reactions to image/video advertisements</li>
       <li>Create recommendations for your product depending on what you want in an advertisement</li>
   </ul>
+
+  <h3>Hypotheses </h3>
+  <ul>
+    <li>The effectiveness of an advertisement can be predicted using topics and sentiments</li>
+    <li>Advertisements cluster together based on their strategies and visual techniques</li>
+    <li>The grouping of advertisements based on their visual techniques change in relation to sentiment type</li>
+  </ul>
+
+  <hr>
+
+  <h3>Data Sources </h3>
+  <a href="https://people.cs.pitt.edu/~kovashka/ads/" target="_blank" rel="noopener">
+    Image and Video Advertisements
+  </a>
+  <p> The image and video advertisement data is from Pitt Ad Video and Image Dataset provide information on available topics and sentiments, along with some freeform annotations.
+    The datasets are basically the results of how the annotator interprets the different advertisements.
+    The image dataset contains annotations concerning strategies, visual imagery, and QA action/reason.
+    The video dataset contains annotations concerning the effectiveness, excitingness, funniness, language use, and QA action/reason.
+    Both datasets contain freeform responses or multipe choice responses on what topic and sentiments that the advertisements give off.
+  </p>
+
+   <hr>
+
+  <h3>Data Preprocessing </h3>
+    <p>
+      The data comes in text and json files. To prepare and organize the data for EDA, we took the data from the text files and manually converted to csv files. Then we used pandas 
+      to merge the csv files with the json files into a dataframe, which we converted into a csv to allow for easier access. The two datasets had to be handled differently due to their 
+      varying structures in annotations. We also used feature engineering to add sentiment type to help analyze the trends.
+    </p>
 {% endblock %}
