@@ -19,7 +19,7 @@ Please visit the [official dataset page](https://people.cs.pitt.edu/~kovashka/ad
 
 ## Live Demo
 
-➡️ **https://cs163-optadpct.appspot.com/**  
+> **https://cs163-optadpct.appspot.com/**  
 (Deployed via Google App Engine Standard)
 
 ---
@@ -41,7 +41,7 @@ gcsfs
 scikit-learn
 ```
 
-### Clone & install
+### Clone & Install
 
 ```bash
 git clone https://github.com/Shiepi/oai-web-python.git

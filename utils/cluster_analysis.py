@@ -22,7 +22,7 @@ from sklearn.manifold import TSNE
 import umap
 
 processed_path = "gs://cs163-optadpct.appspot.com/processed/temp2.csv"
-#processed_path = r"C:\Users\Alice\Documents\SJSU\CS-163\processed\temp2.csv"  
+# processed_path = r"C:\"  # Replace path for local hosting
 
 def build_cluster_figures(k: int = 4) -> dict[str, Figure]:
     """
