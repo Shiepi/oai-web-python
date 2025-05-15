@@ -4,7 +4,6 @@ import plotly.express as px
 import json
 from utils.cluster_analysis import build_cluster_figures 
 from utils.video_analysis   import build_video_figures
-from utils.effective_analysis import build_feature_importance_figure, evaluate_model_results
 
 app = Flask(__name__, template_folder="templates", static_folder="static")
 

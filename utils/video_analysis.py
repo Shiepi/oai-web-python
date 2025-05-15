@@ -1,11 +1,16 @@
 # utils/video_analysis.py
 from pathlib import Path
+import gcsfs
 import pandas as pd, plotly.express as px
 from plotly.graph_objs import Figure
 
+
+fs = gcsfs.GCSFileSystem(token='google_default', project='cs163-optadpct')
+
+
 # RAW_DIR = Path(r"C:\")
-RAW_DIR = Path("gs://cs163-optadpct.appspot.com/annotations_videos/video/")  
-PROCESSED = RAW_DIR / "processed_video_temp.csv"                                   # optional cache
+RAW_DIR = "cs163-optadpct.appspot.com/annotations_videos/video/"
+PROCESSED = Path("processed_video_temp.csv")                                   # optional cache
 
 def build_video_figures(force: bool = False) -> dict[str, Figure]:
     """Build all Plotly figures for *video ads* and return them in a dict."""
@@ -15,19 +20,36 @@ def build_video_figures(force: bool = False) -> dict[str, Figure]:
         merged_df = pd.read_csv(PROCESSED)
     else:
         # 1. ------------- your original load & merge code -------------
-        file_path = RAW_DIR.as_posix() + "/"
+        file_path = "cs163-optadpct.appspot.com/annotations_videos/video/"
 
-        video_id_list         = pd.read_csv(file_path + "final_video_id_list.csv",
-                                            header=None, names=["video_id"])
-        video_topics_list     = pd.read_csv(file_path + "topics_list.csv")
-        video_sentiments_list = pd.read_csv(file_path + "sentiments_list.csv")
+        with fs.open(file_path + "final_video_id_list.csv") as f:
+            video_id_list = pd.read_csv(f, header=None, names=["video_id"])
 
-        video_effective   = pd.read_json(file_path + "cleaned_result/video_Effective_clean.json",  typ="series")
-        video_exciting    = pd.read_json(file_path + "cleaned_result/video_Exciting_clean.json",   typ="series")
-        video_funny       = pd.read_json(file_path + "cleaned_result/video_Funny_clean.json",      typ="series")
-        video_language    = pd.read_json(file_path + "cleaned_result/video_Language_clean.json",   typ="series")
-        video_topics      = pd.read_json(file_path + "cleaned_result/video_Topics_clean.json",     typ="series")
-        video_sentiments  = pd.read_json(file_path + "cleaned_result/video_Sentiments_clean.json", typ="series")
+        with fs.open(file_path + "topics_list.csv") as f:
+            video_topics_list = pd.read_csv(f)
+
+        with fs.open(file_path + "sentiments_list.csv") as f:
+            video_sentiments_list = pd.read_csv(f)
+
+        cleaned_path = file_path + "cleaned_result/"
+
+        with fs.open(cleaned_path + "video_Effective_clean.json") as f:
+            video_effective = pd.read_json(f, typ="series")
+
+        with fs.open(cleaned_path + "video_Exciting_clean.json") as f:
+            video_exciting = pd.read_json(f, typ="series")
+
+        with fs.open(cleaned_path + "video_Funny_clean.json") as f:
+            video_funny = pd.read_json(f, typ="series")
+
+        with fs.open(cleaned_path + "video_Language_clean.json") as f:
+            video_language = pd.read_json(f, typ="series")
+
+        with fs.open(cleaned_path + "video_Topics_clean.json") as f:
+            video_topics = pd.read_json(f, typ="series")
+
+        with fs.open(cleaned_path + "video_Sentiments_clean.json") as f:
+            video_sentiments = pd.read_json(f, typ="series")
 
         # -- index fix / DataFrame reshaping identical to your snippet --
         video_topics_list.index     += 1

@@ -1,5 +1,127 @@
 {% extends "layout.html" %}
 {% block content %}
   <h1>Optimizing Ad Impact</h1>
-  <p class="lead">...</p>
+  <h2 class="text-center">Our Purpose</h2>
+  
+<ul>
+  <li>Attempt to learn more about what goes into ad optimization and how advertisements are created</li>
+
+  <li>This is important because of the large media industry and the amount of money that goes into advertising</li>
+
+</ul>
+
+<hr>
+
+
+  <div class="alert alert-primary" role="alert">
+  Essentially, we're trying to provide advertisers guidance, tips and ideas to a successful advertisement design!
+</div>
+
+<hr>
+
+<h2 class="text-center">Project Objectives</h2>
+
+<ul>
+  <li>Try to predict how a user would rate effectiveness on a 1-5 scale using advertisement topics and sentiments.</li>
+  <li>Analyze how topics and sentiments are grouped based on ad strategies and user-created symbols.</li>
+  <li>Analyze the grouping of topics and sentiments change with respect to sentiment type (positive, neutral, negative). </li>
+</ul>
+
+<hr>
+
+
+<div class="alert alert-success" role="alert">
+  Goal: To analyze audience reactions and thinking on advertisements and figure out what strongly gets them to react the way we want them to
+</div>
+
+<hr>
+
+
+<figure class="text-center my-4">
+    <img src="{{ url_for('static', filename='images/analysis_caption5.jpg') }}"
+         class="img-fluid rounded"
+         alt="Effective Scores">
+  
+    <figcaption class="mt-2 small text-muted">
+        <span class="d-block fw-semibold">Distrbution of Effective Scores by Sentiment Type</span>   
+      </a>
+    </figcaption>
+  </figure>
+
+   <figure class="text-center my-4">
+        <img src="{{ url_for('static', filename='images/analysis_caption4.jpg') }}"
+            class="img-fluid rounded"
+            alt="Dash Plot of Sentiment Distribution">
+    
+        <figcaption class="mt-2 small text-muted">
+            <span class="d-block fw-semibold">The Distribution of Positive, Neutral and Negative Sentiments</span> 
+        </a>
+        </figcaption>
+    </figure>
+
+  <hr>
+  
+  <h2 class="text-center">Analytical Methods</h2>
+  <p>Correlation Analysis</p>
+
+  <p>Random Forest</p>
+
+  <p>K-Modes Clustering</p>
+
+  <hr>
+
+  <h2 class="text-center">Correlation Analysis</h2>
+  <p>The correlation between topic and sentiment with effective score is statistically significant but extremely weak.
+  Dataset is not informative enough to predict.
+  </p>
+
+  <hr>
+
+  <h2 class="text-center">Random Forest</h2>
+
+  <figure class="text-center my-4">
+        <img src="{{ url_for('static', filename='images/analysis_caption6.jpg') }}"
+            class="img-fluid rounded w-50"
+            alt="Random Forest">
+    
+        <figcaption class="mt-2 small text-muted">
+            <span class="d-block fw-semibold">Random Forest</span> 
+        </a>
+        </figcaption>
+    </figure>
+
+    <figure class="text-center my-4">
+        <img src="{{ url_for('static', filename='images/analysis_caption7.jpg') }}"
+            class="img-fluid rounded w-50"
+            alt="Random Forest - Features Importance">
+    
+        <figcaption class="mt-2 small text-muted">
+            <span class="d-block fw-semibold">Random Forest - Features Importance</span> 
+        </a>
+        </figcaption>
+    </figure>
+
+  <hr>
+
+  <h2 class="text-center">K-Modes Clustering</h2>
+  <figure class="text-center my-4">
+        <img src="{{ url_for('static', filename='images/analysis_caption8.jpg') }}"
+            class="img-fluid rounded w-50"
+            alt="K-Modes Clustering">
+    
+        <figcaption class="mt-2 small text-muted">
+            <span class="d-block fw-semibold">K-Modes Clustering</span> 
+        </a>
+        </figcaption>
+    </figure>
+
+  <hr>
+  
+  <h2 class="text-center">Major Findings</h2>
+  <p>Cannot accurately predict annotator-rated effectiveness score of an advertisement based on it’s topic and sentiment</p>
+  <p>Most advertisements lean towards showing a positive sentiment</p>
+  <p>Positive sentiments share a lot of similar strategies and symbols, while neutral and negative sentiments have a larger variety of strategies and symbols in their portrayal</p>
+  <p>Allows us to learn more about how advertisements are created and how consumers would respond and perceive them</p>
+
+
 {% endblock %}

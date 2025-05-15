@@ -15,4 +15,20 @@
         <p>Preserves local and global structure of the data</p>
     </ul>
 
+  <h5>Sentiment Analysis (Positive, Negative, and Neutral)</h5>  
+  <p>In the dataset of “Video Data and Annotations” created by researchers at the University of Pittsburgh, they have provided different emotional states viewers are in when reacting to specific ad topics/types out of 3,477 advertisements. In the first graph, “Sentiment Distribution Across Topics”, it shows the distribution of every different sentiment category corresponding to each ad topic to show how many of each sentiment viewers reacted to the ad topic. When it comes to selling popular and convenient products, there tend to be more sentimental reactions to those advertisements, and there can also be more advertisements of those ad topics as well. However, with all the clusters of data, it’s hard to see the specific type of sentiments spread across each ad topic, as there are so many types of sentiments.</p>
+  <p>When we observe the distribution of the sentiments in a three-way category of positive, neutral, and negative sentiments (in “Distribution of Positive, Neutral, and Negative Sentiments”), we see a more significant distribution between ad topics. The majority of advertisements tend to have a more positive response from the viewers, however, it’s important to note that some ad topics like “Political” and “Smoking Alcohol Abuse” have a bit more neutral and negative sentiments. These sentiments are categorized as positive, neutral, and negative by how each sentiment is closely related to what emotional state people are in. For example, “Cheerful”, “Amazed”, “Inspired”, and “Confident” are closely associated with positive emotional states, while words like “Alarmed” are closer to fear or danger, which will then be associated with negative emotional states. For determining neutral emotional states, we look at terms like “Alert”, “Calm”, and “Conscious” as they are more ambiguous, so we categorize them as neutral.</p>  
+
+    <figure class="text-center my-4">
+        <img src="{{ url_for('static', filename='images/analysis_caption4.jpg') }}"
+            class="img-fluid rounded w-50"
+            alt="Dash Plot of Sentiment Distribution">
+    
+        <figcaption class="mt-2 small text-muted">
+            <span class="d-block fw-semibold">The Distribution of Positive, Neutral and Negative Sentiments</span> 
+        </a>
+        </figcaption>
+    </figure>
+
+
 {% endblock %}
