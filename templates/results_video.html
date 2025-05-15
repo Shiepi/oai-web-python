@@ -51,6 +51,13 @@
     <div data-vid="sent_lang"  class="chart-block d-none">{{ sent_lang|safe }}</div>
 
     <div data-vid="topic_sent" class="chart-block d-none">{{ topic_sent|safe }}</div>
+
+    <div data-vid="model_metrics" class="chart-block d-none">
+      <h4>Balanced Accuracy: {{ results.balanced_accuracy | round(4) }}</h4>
+      <pre>{{ results.classification_report | tojson(indent=2) }}</pre>
+    </div>
+    <div data-vid="conf_matrix" class="chart-block d-none">{{ results.confusion_matrix_fig.to_html(full_html=false)|safe }}</div>
+    <div data-vid="feat_imp" class="chart-block d-none">{{ feature_imp.to_html(full_html=false)|safe }}</div>
   </div>
 </div>
 
@@ -64,4 +71,12 @@
     );
   });
 </script>
+
+<h1>Major Findings</h1>
+  <p>The correlation between topic and sentiment with effective score is statistically significant but extremely weak From the feature imoprtances, we can see that the 
+    funny and exciting scores are two of the most important features in classifying the effective score.
+    We learned that we cannot accurately predict annotator-rated effectiveness score of an advertisement based on it’s topic and sentiment. Regardless of the correlation of
+    sentiment and effective score, we see that advertisers choose to learn towards evoking positive sentiments.
+  </p>
+
 {% endblock %}

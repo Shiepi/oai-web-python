@@ -1,8 +1,28 @@
 {% extends "layout.html" %}
 {% block content %}
   <h1>Exploratory Data Analysis</h1>
-  <div id="plotly-div"></div>
+  <div id="plotly-div">
+    {{ sent_type_effective|safe }}
+    <p>
+      We expected to see that advertisements with negative sentiments would generally score lower than positive sentiments, especially since
+      the large majority of the advertisements have positive sentiments, no matter the topic. But it seems that positive, neutral, and negative 
+      sentiment advertisements all largely scored within the 3-5 range. 
+    </p>
+  </div>
 
-
+  <h2>Analysis Methods</h2>
+  <h5>Random Forest</h5>
+    <p>We use random forest to build a classifer model that uses the video annotations as features to predict
+      the effective score (1-5) that an annotator would give the advertisement. This would tell us whether or not
+      the topic and sentiment of an advertisement is enough to predict how someone would rate its effectiveness.
+    </p>
+  <h5>K-Modes Clustering</h5>
+    <p>We used K-Modes clustering to show how the clustering of strategies and visuals change with sentiment type.</p>
+    <ul>
+      <li>t-SNE Visualization</li>
+        <p>Preserves local structure of the data</p>
+      <li>UMAP Visualization</li>
+        <p>Preserves local and global structure of the data</p>
+    </ul>
 
 {% endblock %}

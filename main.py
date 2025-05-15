@@ -4,6 +4,7 @@ import plotly.express as px
 import json
 from utils.cluster_analysis import build_cluster_figures 
 from utils.video_analysis   import build_video_figures
+from utils.effective_analysis import build_feature_importance_figure, evaluate_model_results
 
 app = Flask(__name__, template_folder="templates", static_folder="static")
 
@@ -30,7 +31,11 @@ def about():
 
 @app.route("/analysis")
 def analysis():
-    return render_template("analysis.html", title="Analysis") 
+    figs = build_video_figures()
+    html = {k: f.to_html(full_html=False, include_plotlyjs=False)
+            for k,f in figs.items()}
+    html["video_mode"] = True  
+    return render_template("analysis.html", title="Analysis", **html) 
 
 @app.route("/results")
 def results():
@@ -51,7 +56,31 @@ def results_video():
     html = {k: f.to_html(full_html=False, include_plotlyjs=False)
             for k,f in figs.items()}
     html["video_mode"] = True       # lets template show a badge, etc.
-    return render_template("results_video.html", title="Results (Video Ads)" **html)  # or results.html if you reuse
+
+     
+    results = evaluate_model_results()
+    feat_imp_fig = build_feature_importance_figure()
+
+    # convert the confusion‐matrix and feature‐importance Plotly figs
+    rf_html = {
+        "model_metrics": None,
+        "conf_matrix": results["confusion_matrix_fig"].to_html(
+            full_html=False, include_plotlyjs=False
+        ),
+        "feat_imp": feat_imp_fig.to_html(
+            full_html=False, include_plotlyjs=False
+        ),
+    }
+
+    context = {
+    **html,
+    **rf_html,
+    "results": results,
+    "video_mode": True,
+    "title": "Results (Video Ads)",
+}
+
+    return render_template("results_video.html", title="Results (Video Ads)", **context)  # or results.html if you reuse
 
 
 if __name__ == "__main__":

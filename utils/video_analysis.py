@@ -60,6 +60,23 @@ def build_video_figures(force: bool = False) -> dict[str, Figure]:
         common_sentiments = common_sentiments[common_sentiments > 30].index
         merged_df = merged_df[merged_df["Sentiment"].isin(common_sentiments)]
 
+        positive_sentiments = ['Inspired', 'Active', 'Amused', 'Amazed', 'Proud', 'Hopeful', 'Empowered', 'Excited', 'Cheerful', 'Youthful', 'Educated', 'Eager', 'Confident', 'Creative', 'Persuaded', 'Fashionable']
+        negative_sentiments = ['Angry', 'Annoyed', 'Disgusted', 'Sad', 'Frustrated', 'Horrified', 'Alarmed']
+        neutral_sentiments = ['Indifferent', 'Neutral', 'Calm', 'Relaxed', 'Alert', 'Conscious']
+
+        # Function to classify sentiment
+        def classify_sentiment(sentiment):
+            if sentiment in positive_sentiments:
+                return 'positive'
+            elif sentiment in negative_sentiments:
+                return 'negative'
+            elif sentiment in neutral_sentiments:
+                return 'neutral'
+            else:
+                return 'unknown'
+
+        merged_df['sentiment_type'] = merged_df['Sentiment'].apply(classify_sentiment)
+
         merged_df.to_csv(PROCESSED, index=False)
 
     # 2. ------------- build Plotly figures ---------------------------
@@ -101,5 +118,14 @@ def build_video_figures(force: bool = False) -> dict[str, Figure]:
     figs["topic_sent"] = px.bar(st_counts, x="Topic", y="count",
                                 color="Sentiment", barmode="stack",
                                 title="Sentiment Distribution Across Topics")
+
+    figs["sent_type_effective"] = px.box(
+        merged_df,
+        x="sentiment_type",
+        y="effective_score",
+        color="sentiment_type",
+        title="Distribution of Effective Scores by Sentiment Type",
+        labels={"sentiment_type": "Sentiment Type", "effective_score": "Effective Score"}
+    )
 
     return figs

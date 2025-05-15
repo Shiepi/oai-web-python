@@ -96,6 +96,9 @@ def build_cluster_figures(k: int = 4) -> dict[str, Figure]:
     tsne_df['Cluster']   = clusters
     tsne_df['Index']     = tsne_df.index
     tsne_df['Sentiment'] = tsne_df.index.map(dominant_sent)
+    tsne_df['mapped_topics'] =     clean.loc[tsne_df.index, 'mapped_topics']
+    tsne_df['mapped_strategies'] = clean.loc[tsne_df.index, 'mapped_strategies']
+    tsne_df['symbol_labels'] =     clean.loc[tsne_df.index, 'symbol_labels']
 
     umap_df = pd.DataFrame(
         umap.UMAP(n_components=2, random_state=42, n_neighbors=15, min_dist=0.1,
@@ -104,11 +107,18 @@ def build_cluster_figures(k: int = 4) -> dict[str, Figure]:
     umap_df['Cluster']   = clusters
     umap_df['Index']     = umap_df.index
     umap_df['Sentiment'] = tsne_df['Sentiment']
+    umap_df['mapped_topics'] =     clean.loc[umap_df.index, 'mapped_topics']
+    umap_df['mapped_strategies'] = clean.loc[umap_df.index, 'mapped_strategies']
+    umap_df['symbol_labels'] =     clean.loc[umap_df.index, 'symbol_labels']
+
+    dominant_sentiment = exploded.groupby(exploded.index)['sentiment_type'].agg(
+        lambda x: x.mode().iloc[0] if not x.mode().empty else 'unknown'
+    )
 
     def make_scatter(df, x, y, title):
         fig = px.scatter(df, x=x, y=y,
                          color='Cluster', symbol='Sentiment',
-                         hover_data=['Cluster','Index','Sentiment'],
+                         hover_data=['Cluster','Index','Sentiment', 'mapped_topics', 'Sentiment', 'mapped_strategies', 'symbol_labels'],
                          title=title)
         fig.update_traces(marker=dict(size=6, opacity=0.7))
         return fig
