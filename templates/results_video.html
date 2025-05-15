@@ -51,13 +51,6 @@
     <div data-vid="sent_lang"  class="chart-block d-none">{{ sent_lang|safe }}</div>
 
     <div data-vid="topic_sent" class="chart-block d-none">{{ topic_sent|safe }}</div>
-
-    <div data-vid="model_metrics" class="chart-block d-none">
-      <h4>Balanced Accuracy: {{ results.balanced_accuracy | round(4) }}</h4>
-      <pre>{{ results.classification_report | tojson(indent=2) }}</pre>
-    </div>
-    <div data-vid="conf_matrix" class="chart-block d-none">{{ results.confusion_matrix_fig.to_html(full_html=false)|safe }}</div>
-    <div data-vid="feat_imp" class="chart-block d-none">{{ feature_imp.to_html(full_html=false)|safe }}</div>
   </div>
 </div>
 
